@@ -5,7 +5,7 @@ import App from './App';
 import SignIn from './pages/SignIn';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const currentUser = false
+const currentUser = true
 
 root.render(
   <React.StrictMode>

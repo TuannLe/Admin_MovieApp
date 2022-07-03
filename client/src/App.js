@@ -1,16 +1,20 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import SignIn from './pages/SignIn'
+import Home from './pages/Home'
+import Navbar from './components/Navbar'
 
 function App() {
   return (
-    <div>
-      <Router>
+    <Router>
+      <div className="w-full h-full flex flex-row">
+        <div className="w-60 h-screen bg-[#1c3b6a]">
+          <Navbar />
+        </div>
         <Routes>
-          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/" element={< Home />} />
         </Routes>
-      </Router>
-    </div >
+      </div>
+    </Router>
   );
 }
 
