@@ -29,7 +29,7 @@ export default function AddMovie() {
     }
 
     return (
-        <div className="flex flex-row w-full h-full bg-[#192c54] p-5">
+        <div className="flex flex-row w-full h-full bg-[#192c54] p-5 rounded-tl-xl">
             <div className="flex flex-col space-y-2 w-1/3">
                 <input
                     type="text"

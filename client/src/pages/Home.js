@@ -95,7 +95,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <h1>Top 10</h1>
+            <h1 className="text-white text-2xl font-medium mt-5 mb-2">Top 10</h1>
             <div className="bg-[#101f42] p-3 rounded-xl">
                 <div className='grid grid-cols-5 gap-3'>
                     {data.map((item, i) => {

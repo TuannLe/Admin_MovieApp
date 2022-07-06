@@ -5,6 +5,7 @@ import ListMovie from './pages/ListMovie';
 import AddMovie from './pages/AddMovie'
 import Navbar from './components/Navbar'
 import Header from './components/Header'
+import Detail from './components/Detail'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/" element={< Home />} />
             <Route path="/list-movie" element={< ListMovie />} />
             <Route path="/add-movie" element={< AddMovie />} />
+            <Route path="/detail-movie" element={< Detail />} />
           </Routes>
         </div>
       </div>
