@@ -3,7 +3,8 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import categories from './routers/categories.js'
+import categoryRouter from './routers/categories.js'
+import authRouter from './routers/auth.js'
 
 dotenv.config()
 
@@ -15,7 +16,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true, limit: '30mb' }));
 app.use(cors());
 
-app.use('/categories', categories)
+app.use('/auth', authRouter);
+app.use('/categories', categoryRouter)
+
 
 mongoose
     .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
