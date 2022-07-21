@@ -43,3 +43,47 @@ export const getCategoriesFailure = (error) => {
         error
     }
 }
+
+// Edit category
+export const editCategoryStart = (payload) => {
+    return {
+        type: TYPES.EDIT_CATEGORY_START,
+        payload
+    }
+}
+
+export const editCategorySuccess = (payload) => {
+    return {
+        type: TYPES.EDIT_CATEGORY_SUCCESS,
+        payload
+    }
+}
+
+export const editCategoryFailure = (error) => {
+    return {
+        type: TYPES.EDIT_CATEGORY_FAILURE,
+        error
+    }
+}
+
+// Delete category
+export const deleteCategoryStart = (payload) => {
+    return {
+        type: TYPES.DELETE_CATEGORY_START,
+        payload
+    }
+}
+
+export const deleteCategorySuccess = (payload) => {
+    return {
+        type: TYPES.DELETE_CATEGORY_SUCCESS,
+        payload
+    }
+}
+
+export const deleteCategoryFailure = (error) => {
+    return {
+        type: TYPES.DELETE_CATEGORY_FAILURE,
+        error
+    }
+}

@@ -1,14 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../../assets/images/logo.png'
 import { TbLayoutGridAdd, TbMovie } from "react-icons/tb";
 import { AiOutlineVideoCameraAdd } from "react-icons/ai";
 import { IoLogOutOutline } from "react-icons/io5"
+import { useSelector } from "react-redux"
+import logo from '../../assets/images/logo.png'
 
-export default function index() {
+export default function Navbar() {
+    const token = useSelector((state) => state.auth.currentUser.accessToken)
+
+    if (!token) {
+        return <></>
+    }
+
     return (
-
-        <div className="flex flex-col justify-between h-full px-3">
+        <div className="w-60 flex flex-col justify-between h-full px-3">
             <div className="flex flex-col">
                 <img
                     src={logo}

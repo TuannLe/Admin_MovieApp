@@ -1,7 +1,13 @@
 import React from 'react'
+import { useSelector } from "react-redux"
 import avatar from '../../assets/images/avatar.jpg'
 
-export default function index() {
+export default function Header() {
+    const token = useSelector((state) => state.auth.currentUser.token)
+    if (!token) {
+        return <></>
+    }
+
     return (
         <div className="flex justify-end items-center w-full h-14 bg-[#1c3b6a] px-10">
             <img
