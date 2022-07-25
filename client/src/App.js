@@ -8,6 +8,7 @@ import Navbar from './components/Navbar'
 import Header from './components/Header'
 import Detail from './components/Detail'
 import SignIn from '../src/pages/SignIn'
+import ListCategory from '../src/pages/ListCategory'
 import store from '../src/redux/store'
 import RequireAuth from '../src/components/RequireAuth'
 
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/list-movie" element={< ListMovie />} />
                 <Route path="/add-movie" element={< AddMovie />} />
                 <Route path="/detail-movie" element={< Detail />} />
+                <Route path="/list-category" element={< ListCategory />} />
               </Routes>
             </RequireAuth>
             <Routes>

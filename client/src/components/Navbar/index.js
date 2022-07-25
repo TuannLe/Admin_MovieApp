@@ -27,11 +27,15 @@ export default function Navbar() {
                 </Link>
                 <Link to="list-movie" className="flex flex-row items-center text-white px-8 py-2">
                     <span className="w-8 text-2xl text-gray-400"><TbMovie /></span>
-                    <span className="text-base font-medium">List Movie</span>
+                    <span className="text-base font-medium">Movies</span>
                 </Link>
                 <Link to="add-movie" className="flex flex-row items-center text-white px-8 py-2">
                     <span className="w-8 text-2xl text-gray-400"><AiOutlineVideoCameraAdd /></span>
                     <span className="text-base font-medium">Add Movie</span>
+                </Link>
+                <Link to="list-category" className="flex flex-row items-center text-white px-8 py-2">
+                    <span className="w-8 text-2xl text-gray-400"><AiOutlineVideoCameraAdd /></span>
+                    <span className="text-base font-medium">Categories</span>
                 </Link>
             </div>
             <div className="mb-10">

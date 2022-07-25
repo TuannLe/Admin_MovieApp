@@ -69,21 +69,21 @@ export const editCategoryFailure = (error) => {
 // Delete category
 export const deleteCategoryStart = (payload) => {
     return {
-        type: TYPES.DELETE_CATEGORY_START,
+        type: TYPES.DEL_CATEGORY_START,
         payload
     }
 }
 
 export const deleteCategorySuccess = (payload) => {
     return {
-        type: TYPES.DELETE_CATEGORY_SUCCESS,
+        type: TYPES.DEL_CATEGORY_SUCCESS,
         payload
     }
 }
 
 export const deleteCategoryFailure = (error) => {
     return {
-        type: TYPES.DELETE_CATEGORY_FAILURE,
+        type: TYPES.DEL_CATEGORY_FAILURE,
         error
     }
 }

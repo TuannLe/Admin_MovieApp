@@ -57,8 +57,8 @@ const data = [
 export default function ListMovie() {
     return (
         <div className="w-full h-full bg-[#192c54] pt-5 pb-12 rounded-tl-xl overflow-hidden">
-            <div className="flex justify-between items-center mb-3">
-                <h1 className="text-white text-2xl font-medium px-5">
+            <div className="flex justify-between items-center mb-3 px-5">
+                <h1 className="text-white text-2xl font-medium">
                     List Movie
                 </h1>
                 <div className="space-x-3">
@@ -75,7 +75,7 @@ export default function ListMovie() {
                     </select>
                 </div>
             </div>
-            <div className="bg-[#101f42] p-5 rounded-xl overflow-y-scroll w-full h-full">
+            <div className="bg-[#101f42] p-5 rounded-tl-xl overflow-y-scroll w-full h-full">
                 <div className='grid grid-cols-6 gap-3'>
                     {data.map((item, i) => {
                         return (
