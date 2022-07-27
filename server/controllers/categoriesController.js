@@ -44,5 +44,17 @@ export const categoryController = {
         } catch (error) {
             res.status(500).json(error)
         }
+    },
+    changeStatusCategory: async (req, res) => {
+        try {
+            const changeStatus = {
+                _id: req.body._id,
+                status: !req.body.status,
+            }
+            const newCategory = await CategoryModel.findByIdAndUpdate({ _id: changeStatus._id }, changeStatus, { new: true })
+            res.status(200).json(newCategory)
+        } catch (error) {
+            res.status(500).json({ error })
+        }
     }
 }

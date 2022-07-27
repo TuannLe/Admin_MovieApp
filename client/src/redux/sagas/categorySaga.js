@@ -49,7 +49,8 @@ function* deleteCategorySaga(action) {
         const res = yield call(apis.deleteCategory, action.payload)
         if (res.status === 200) {
             console.log('Delete category successfully')
-            yield put(actions.deleteCategorySuccess())
+            console.log(res.data)
+            yield put(actions.deleteCategorySuccess({ categoryId: action.payload.categoryId }))
         }
     } catch (error) {
         yield put(actions.deleteCategoryFailure(error))

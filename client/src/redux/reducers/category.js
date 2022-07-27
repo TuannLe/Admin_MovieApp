@@ -68,9 +68,12 @@ export default function categoryReducers(state = INIT_STATE.category, action) {
             }
         case TYPES.DEL_CATEGORY_SUCCESS:
             const newListCategory = [...state.categories]
+            console.log(newListCategory)
+            console.log(action.payload.categoryId)
             newListCategory.splice(newListCategory.findIndex((item) => {
                 return item._id === action.payload.categoryId
             }), 1)
+            console.log(newListCategory)
             return {
                 ...state,
                 isLoading: false,
