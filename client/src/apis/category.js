@@ -3,7 +3,6 @@ import AXIOS from './index'
 const url = '/categories'
 
 export const addCategory = async (payload) => {
-    console.log(payload)
     try {
         const res = await AXIOS.post(`${url}/create`, payload, {
             headers: {

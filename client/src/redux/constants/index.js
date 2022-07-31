@@ -10,5 +10,12 @@ export const INIT_STATE = {
         data: {},
         isLoading: false,
         error: false
+    },
+    movie: {
+        movies: [],
+        moviesByCategory: [],
+        moviesSearch: [],
+        isLoading: false,
+        error: false
     }
 }

@@ -5,6 +5,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import categoryRouter from './routers/categories.js'
 import authRouter from './routers/auth.js'
+import movieRouter from './routers/movies.js'
 
 dotenv.config()
 
@@ -17,7 +18,9 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '30mb' }));
 app.use(cors());
 
 app.use('/auth', authRouter);
-app.use('/categories', categoryRouter)
+app.use('/categories', categoryRouter);
+app.use('/movies', movieRouter)
+
 
 
 mongoose

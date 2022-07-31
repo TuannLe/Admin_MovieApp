@@ -5,7 +5,14 @@ const schema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    category: {
+    poster: {
+        type: String,
+        required: true,
+    },
+    link360: String,
+    link720: String,
+    link1080: String,
+    categoryId: {
         type: String,
         required: true,
     },

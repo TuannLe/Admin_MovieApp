@@ -1,11 +1,22 @@
 import { MovieModel } from '../models/MovieModel.js';
+import queryString from 'query-string'
+
 
 export const movieController = {
     addMovie: async (req, res) => {
         try {
+            const link = req.body.link
+            const linkParse = queryString.parse(link).fmt_stream_map
+            const newLink360 = linkParse.slice(linkParse.indexOf('https:'), linkParse.indexOf(','))
+            const newLink720 = linkParse.slice(linkParse.indexOf('22|https:') + 3, linkParse.indexOf(',37'))
+            const newLink1080 = linkParse.slice(linkParse.lastIndexOf('https:'), linkParse.length)
             const newMovie = {
                 movieName: req.body.movieName,
-                category: req.body.category,
+                poster: req.body.poster,
+                link360: newLink360,
+                link720: newLink720,
+                link1080: newLink1080,
+                categoryId: req.body.categoryId,
                 description: req.body.description,
                 directors: req.body.directors,
                 casts: req.body.casts,
@@ -27,17 +38,24 @@ export const movieController = {
             res.status(500).json(error)
         }
     },
-    getDetail: async (req, res) => {
-        try {
-
-        } catch (error) {
-
-        }
-    },
     getMoviesByCategory: async (req, res) => {
         try {
             const movies = await MovieModel.find({ category: req.params.id })
             res.status(200).json(movies)
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    },
+    searchMovies: async (req, res) => {
+        try {
+            let movieName = new RegExp('^' + req.body.movieName)
+            MovieModel.find({ movieName: { $regex: movieName } })
+                .then(movies => {
+                    res.json(movies)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         } catch (error) {
             res.status(500).json(error)
         }
