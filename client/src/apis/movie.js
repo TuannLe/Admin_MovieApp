@@ -2,11 +2,12 @@ import AXIOS from "./index"
 
 const url = '/movies'
 
-export const addMovie = async (payload) => {
+export const addMovie = async ({ token, formData }) => {
     try {
-        const res = await AXIOS.post(`${url}/create`, payload, {
+        const res = await AXIOS.post(`${url}/create`, formData, {
             headers: {
-                'token': `Bearer ${payload.token}`
+                'token': `Bearer ${token}`,
+                'Content-Type': `multipart/form-data`,
             }
         })
         return res

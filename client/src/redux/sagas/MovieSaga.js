@@ -6,7 +6,10 @@ import * as types from '../constants/movie'
 function* addMovieSaga(action) {
     try {
         console.log('Add movie running...')
-        const res = yield call(apis.addMovie, action.payload)
+        const res = yield call(apis.addMovie, {
+            token: action.payload.token,
+            formData: action.payload.data
+        })
         if (res.status === 200) {
             console.log('Add movie successfully')
             yield put(actions.addMovieSuccess(res.data))

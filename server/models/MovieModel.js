@@ -13,8 +13,7 @@ const schema = new mongoose.Schema({
     link720: String,
     link1080: String,
     categoryId: {
-        type: String,
-        required: true,
+        type: mongoose.Schema.ObjectId,
     },
     description: {
         type: String,

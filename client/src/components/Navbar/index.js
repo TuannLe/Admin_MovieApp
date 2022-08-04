@@ -3,14 +3,21 @@ import { Link } from 'react-router-dom'
 import { TbLayoutGridAdd, TbMovie } from "react-icons/tb";
 import { AiOutlineVideoCameraAdd } from "react-icons/ai";
 import { IoLogOutOutline } from "react-icons/io5"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import logo from '../../assets/images/logo.png'
+import { logout } from '../../redux/actions/auth'
 
 export default function Navbar() {
     const token = useSelector((state) => state.auth.currentUser.accessToken)
+    const dispatch = useDispatch()
 
     if (!token) {
         return <></>
+    }
+
+    const handleLogout = (e) => {
+        e.preventDefault()
+        dispatch(logout())
     }
 
     return (
@@ -39,7 +46,10 @@ export default function Navbar() {
                 </Link>
             </div>
             <div className="mb-10">
-                <button className="flex flex-row w-full items-center justify-center text-white bg-[#192c54] p-3 space-x-2 rounded-lg">
+                <button
+                    onClick={handleLogout}
+                    className="flex flex-row w-full items-center justify-center text-white bg-[#192c54] p-3 space-x-2 rounded-lg"
+                >
                     <p className="font-medium">Log out</p>
                     <IoLogOutOutline className="text-2xl" />
                 </button>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import ItemCategory from '../components/ListCategory/ItemCategory'
 import { useDispatch, useSelector } from 'react-redux'
 import Modal from 'react-modal'
@@ -26,10 +26,6 @@ export default function ListCategory() {
     const [categoryName, setCategoryName] = useState('')
     const [status, setStatus] = useState(false)
     const [categoryId, setCategoryId] = useState('')
-
-    useEffect(() => {
-        dispatch(actions.getCategoriesStart({ token }))
-    }, [token, dispatch])
 
     const showModal = () => {
         setIsShowing(true)

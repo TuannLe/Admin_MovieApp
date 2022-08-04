@@ -1,6 +1,6 @@
 import React from 'react'
-import Poster from '../../assets/images/poster1.jpg'
 import ItemMovie from '../ListMovie/ItemMovie'
+import { useLocation } from "react-router-dom";
 
 const data = [
     {
@@ -25,12 +25,13 @@ const data = [
     }
 ]
 
-export default function index() {
+export default function Detail() {
+    const item = useLocation().state.item
     return (
         <div className="w-full h-full bg-[#101f42] overflow-y-scroll rounded-tl-xl relative">
             <div
                 style={{
-                    backgroundImage: `url(${require("../../assets/images/DetailMovieBG.jpg")})`
+                    backgroundImage: `url(${require("../../assets/images/DetailMovieBG.jpg")})`,
                 }}
                 className="w-full h-64 bg-cover"
             >
@@ -39,32 +40,34 @@ export default function index() {
                 <div className="w-full h-full flex">
                     <div className="w-1/3 mx-10">
                         <img
-                            src={Poster}
-                            className="w-full h-full rounded-lg"
+                            src={`data:image/png;base64,${item.poster}`}
+                            className="w-full h-full max-h-[500px] rounded-lg object-cover"
                             alt="Poster"
                         />
                     </div>
                     <div className="flex-1">
-                        <div className="space-y-3">
-                            <h1 className="text-4xl font-medium text-white">Movie name</h1>
-                            <p className="text-xl text-gray-300">The loai</p>
+                        <div className="space-y-2 h-52" >
+                            <h1 className="text-4xl font-medium text-white">{item.movieName}</h1>
+                            <p className="text-xl text-gray-300">{item.category[0].categoryName}</p>
                             <div className="text-gray-300">
                                 <span>Directed: </span>
-                                <span>About Movie</span>
+                                <span>{item.directors}</span>
+                            </div>
+                            <div className="text-gray-300">
+                                <span>Casts: </span>
+                                <span>{item.casts.join(',')}</span>
                             </div>
                             <p className="text-gray-300">2h30p</p>
                         </div>
-                        <div className='mt-20'>
+                        <div className='mt-5'>
                             <h2 className="text-white text-lg font-medium">About Movie</h2>
-                            <p className="text-gray-400">uihuih hih hh hh ohoi ojoj ojj uihuih hih hh hh ohoi ojoj ojj uihuih hih hh hh ohoi ojoj ojj</p>
+                            <p className="text-gray-400">{item.description}</p>
                         </div>
                     </div>
                 </div>
                 <div className='mt-5 ml-10'>
-                    <video
-                        width="100%" height="100%" controls
-                    >
-                        <source src="" type='video/mp4' />
+                    <video autoPlay="autoplay" controls="controls" width="100%" height="100%">
+                        <source src={item.link1080} type='video/mp4' />
                     </video>
                 </div>
                 <div className='ml-10 mt-5'>

@@ -9,6 +9,6 @@ export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS"
 export const SIGN_UP_FAILURE = "SIGN_UP_FAILURE"
 
 // Logout
-export const LOGOUT_START = "LOGOUT_START"
-export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS"
-export const LOGOUT_FAILURE = "LOGOUT_FAILURE"
+export const LOGOUT = "LOGOUT"
+// export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS"
+// export const LOGOUT_FAILURE = "LOGOUT_FAILURE"

@@ -1,5 +1,8 @@
 import { MovieModel } from '../models/MovieModel.js';
+import { CategoryModel } from '../models/CategoryModel.js';
 import queryString from 'query-string'
+import fs from 'fs'
+import path from 'path';
 
 
 export const movieController = {
@@ -10,33 +13,50 @@ export const movieController = {
             const newLink360 = linkParse.slice(linkParse.indexOf('https:'), linkParse.indexOf(','))
             const newLink720 = linkParse.slice(linkParse.indexOf('22|https:') + 3, linkParse.indexOf(',37'))
             const newLink1080 = linkParse.slice(linkParse.lastIndexOf('https:'), linkParse.length)
+
+            const image = fs.readFileSync(req.files[0].path, { encoding: 'base64' })
+            const castString = req.body.casts
+            const arrayCast = castString.split(',')
+
             const newMovie = {
                 movieName: req.body.movieName,
-                poster: req.body.poster,
+                poster: image,
                 link360: newLink360,
                 link720: newLink720,
                 link1080: newLink1080,
                 categoryId: req.body.categoryId,
                 description: req.body.description,
                 directors: req.body.directors,
-                casts: req.body.casts,
+                casts: arrayCast,
                 status: req.body.status,
             }
             const movie = new MovieModel(newMovie)
             await movie.save()
-            const movies = await MovieModel.find()
-            res.status(200).json(movies)
+            MovieModel.aggregate([{
+                $lookup: {
+                    from: "categories",
+                    localField: "categoryId",
+                    foreignField: "_id",
+                    as: "category"
+                }
+            }]).exec(function (err, movies) {
+                res.json(movies)
+            });
         } catch (error) {
             res.status(500).json(error)
         }
     },
-    getMovies: async (req, res) => {
-        try {
-            const movies = await MovieModel.find()
-            res.status(200).json(movies)
-        } catch (error) {
-            res.status(500).json(error)
-        }
+    getMovies: (req, res) => {
+        MovieModel.aggregate([{
+            $lookup: {
+                from: "categories",
+                localField: "categoryId",
+                foreignField: "_id",
+                as: "category"
+            }
+        }]).exec(function (err, movies) {
+            res.json(movies)
+        });
     },
     getMoviesByCategory: async (req, res) => {
         try {

@@ -40,6 +40,11 @@ export default function authReducers(state = INIT_STATE.auth, action) {
                 isLoading: false,
                 error: true
             }
+        case TYPES.LOGOUT:
+            return {
+                ...state,
+                currentUser: {}
+            }
         default:
             return state
     }

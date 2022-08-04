@@ -15,6 +15,7 @@ export const INIT_STATE = {
         movies: [],
         moviesByCategory: [],
         moviesSearch: [],
+        message: '',
         isLoading: false,
         error: false
     }

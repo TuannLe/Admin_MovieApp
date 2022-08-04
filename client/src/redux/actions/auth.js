@@ -21,3 +21,9 @@ export const SignInFailure = (error) => {
         error: error
     }
 }
+
+export const logout = () => {
+    return {
+        type: TYPES.LOGOUT,
+    }
+}

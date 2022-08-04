@@ -14,12 +14,14 @@ export default function movieReducer(state = INIT_STATE.movie, action) {
                 ...state,
                 movies: action.payload,
                 isLoading: false,
+                message: 'Add movie successfully',
                 error: false
             }
         case TYPES.ADD_MOVIE_FAILURE:
             return {
                 ...state,
                 isLoading: false,
+                message: 'Add movie failed',
                 error: true
             }
         // Get movies
