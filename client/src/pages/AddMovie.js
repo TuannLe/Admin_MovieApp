@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import * as actions from '../redux/actions/movie'
+import axios from 'axios'
 
 export default function AddMovie() {
     const dispatch = useDispatch()
@@ -13,7 +14,7 @@ export default function AddMovie() {
 
     const [data, setData] = useState({
         movieName: '',
-        link: '',
+        docId: '',
         poster: '',
         categoryId: '',
         description: '',
@@ -27,8 +28,8 @@ export default function AddMovie() {
         e.preventDefault();
         if (!data.movieName) {
             setWarn('Please enter movie name')
-        } else if (!data.link) {
-            setWarn('Please enter link movie')
+        } else if (!data.docId) {
+            setWarn('Please enter docId movie')
         } else if (!data.directors) {
             setWarn('Please enter director name')
         } else if (!data.casts) {
@@ -41,11 +42,10 @@ export default function AddMovie() {
             setWarn('Please choose poster image')
         }
         dispatch(actions.addMovieStart({ data, token }))
-        console.log('hihih')
         setData({
             ...data,
             movieName: '',
-            link: '',
+            docId: '',
             poster: '',
             categoryId: '',
             description: '',
@@ -54,6 +54,7 @@ export default function AddMovie() {
             status: true,
         })
     }
+
 
     return (
         <div className="flex flex-row w-full h-full bg-[#192c54] p-5 rounded-tl-xl">
@@ -67,9 +68,9 @@ export default function AddMovie() {
                 />
                 <input
                     type="text"
-                    placeholder="Link"
-                    value={data.link}
-                    onChange={(e) => setData({ ...data, link: e.target.value })}
+                    placeholder="docId"
+                    value={data.docId}
+                    onChange={(e) => setData({ ...data, docId: e.target.value })}
                     className="text-base rounded outline-none px-2 py-1"
                 />
                 <input

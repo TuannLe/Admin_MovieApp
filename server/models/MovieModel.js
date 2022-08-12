@@ -9,9 +9,7 @@ const schema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    link360: String,
-    link720: String,
-    link1080: String,
+    docId: String,
     categoryId: {
         type: mongoose.Schema.ObjectId,
     },

@@ -45,6 +45,19 @@ function* getMoviesByCategorySaga(action) {
     }
 }
 
+function* getLinksMovieSaga(action) {
+    try {
+        console.log('Get links running...')
+        const res = yield call(apis.getLinkMovie, action.payload)
+        if (res.status === 200) {
+            console.log('Get links movie successfully')
+            yield put(actions.getLinkMovieSuccess(res.data))
+        }
+    } catch (error) {
+        yield put(actions.getLinkMovieFailure(error))
+    }
+}
+
 function* searchMoviesSaga(action) {
     try {
         console.log('Search movies running...')
@@ -61,7 +74,10 @@ function* searchMoviesSaga(action) {
 function* updateMovieSaga(action) {
     try {
         console.log('Update movies running...')
-        const res = yield call(apis.updateMovie, action.payload)
+        const res = yield call(apis.updateMovie, {
+            token: action.payload.token,
+            formData: action.payload.formData
+        })
         if (res.status === 200) {
             console.log('Update movies successfully')
             yield put(actions.updateMovieSuccess(res.data))
@@ -88,6 +104,7 @@ const movieSaga = [
     takeLatest(types.ADD_MOVIE_START, addMovieSaga),
     takeLatest(types.GET_MOVIES_START, getMoviesSaga),
     takeLatest(types.GET_MOVIES_BY_CATEGORY_START, getMoviesByCategorySaga),
+    takeLatest(types.GET_LINK_MOVIE_START, getLinksMovieSaga),
     takeLatest(types.SEARCH_MOVIES_START, searchMoviesSaga),
     takeLatest(types.UPDATE_MOVIE_START, updateMovieSaga),
     takeLatest(types.DELETE_MOVIE_START, deleteMovieSaga),

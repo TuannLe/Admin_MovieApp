@@ -42,6 +42,19 @@ export const getMoviesByCategory = async (payload) => {
     }
 }
 
+export const getLinkMovie = async (payload) => {
+    try {
+        const res = await AXIOS.get(`${url}/${payload.docId}/get-link-movie`, {
+            headers: {
+                'token': `Bearer ${payload.token}`
+            }
+        })
+        return res
+    } catch (error) {
+        return error
+    }
+}
+
 export const searchMovies = async (payload) => {
     try {
         const res = await AXIOS.post(`${url}/search`, payload, {
@@ -55,11 +68,11 @@ export const searchMovies = async (payload) => {
     }
 }
 
-export const updateMovie = async (payload) => {
+export const updateMovie = async ({ token, formData }) => {
     try {
-        const res = await AXIOS.post(`${url}/update`, payload, {
+        const res = await AXIOS.post(`${url}/update`, formData, {
             headers: {
-                'token': `Bearer ${payload.token}`
+                'token': `Bearer ${token}`
             }
         })
         return res

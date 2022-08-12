@@ -66,6 +66,28 @@ export const getMoviesByCategoryFailure = (error) => {
     }
 }
 
+// Get link movie
+export const getLinkMovieStart = (payload) => {
+    return {
+        type: TYPES.GET_LINK_MOVIE_START,
+        payload
+    }
+}
+
+export const getLinkMovieSuccess = (payload) => {
+    return {
+        type: TYPES.GET_LINK_MOVIE_SUCCESS,
+        payload
+    }
+}
+
+export const getLinkMovieFailure = (err) => {
+    return {
+        type: TYPES.GET_LINK_MOVIE_FAILURE,
+        err
+    }
+}
+
 // Search movies
 export const searchMoviesStart = (payload) => {
     return {
@@ -111,7 +133,7 @@ export const updateMovieFailure = (error) => {
 }
 
 // Delete movie
-export const deleteMovie = (payload) => {
+export const deleteMovieStart = (payload) => {
     return {
         type: TYPES.DELETE_MOVIE_START,
         payload

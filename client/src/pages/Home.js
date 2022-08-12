@@ -18,6 +18,7 @@ export default function Home() {
     }, [token, dispatch])
 
     const data = useSelector((state) => state.movie.movies)
+    const categories = useSelector((state) => state.category.categories)
     return (
         <div className="w-full h-full bg-[#192c54] p-5 overflow-y-scroll rounded-tl-xl">
             <div className="flex space-x-8">
@@ -40,7 +41,7 @@ export default function Home() {
                     />
                     <div className="flex flex-col flex-1 items-center">
                         <p className="text-white text-lg font-medium">Movies</p>
-                        <p className="text-gray-400 text-4xl">20</p>
+                        <p className="text-gray-400 text-4xl">{data.length}</p>
                     </div>
                 </div>
                 <div className="flex flex-1 p-5 bg-gradient-to-r from-[#102042] to-[#1a338e] rounded-xl">
@@ -51,7 +52,7 @@ export default function Home() {
                     />
                     <div className="flex flex-col flex-1 items-center">
                         <p className="text-white text-lg font-medium">Categories</p>
-                        <p className="text-gray-400 text-4xl">10</p>
+                        <p className="text-gray-400 text-4xl">{categories.length}</p>
                     </div>
                 </div>
             </div>

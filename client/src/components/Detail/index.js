@@ -1,6 +1,8 @@
-import React from 'react'
-import ItemMovie from '../ListMovie/ItemMovie'
+import { useEffect } from 'react'
 import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import ItemMovie from '../ListMovie/ItemMovie'
+import * as actions from '../../redux/actions/movie'
 
 const data = [
     {
@@ -27,6 +29,16 @@ const data = [
 
 export default function Detail() {
     const item = useLocation().state.item
+    const dispatch = useDispatch()
+    const token = useSelector((state) => state.auth.currentUser.accessToken)
+    const docId = item.docId
+
+    useEffect(() => {
+        dispatch(actions.getLinkMovieStart({ token, docId }))
+    }, [token, docId, dispatch])
+
+    const arrayLink = useSelector((state) => state.movie.linksMovie)
+    console.log(arrayLink[1])
     return (
         <div className="w-full h-full bg-[#101f42] overflow-y-scroll rounded-tl-xl relative">
             <div
@@ -67,7 +79,7 @@ export default function Detail() {
                 </div>
                 <div className='mt-5 ml-10'>
                     <video autoPlay="autoplay" controls="controls" width="100%" height="100%">
-                        <source src={item.link1080} type='video/mp4' />
+                        <source src={arrayLink[0]} type='video/mp4' />
                     </video>
                 </div>
                 <div className='ml-10 mt-5'>

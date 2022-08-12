@@ -62,6 +62,26 @@ export default function movieReducer(state = INIT_STATE.movie, action) {
                 isLoading: false,
                 error: true
             }
+        // Get link movie
+        case TYPES.GET_LINK_MOVIE_START:
+            return {
+                ...state,
+                isLoading: true
+            }
+        case TYPES.GET_LINK_MOVIE_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                linksMovie: action.payload,
+                error: false
+            }
+        case TYPES.GET_LINK_MOVIE_FAILURE: {
+            return {
+                ...state,
+                isLoading: false,
+                error: true
+            }
+        }
         // Search movies
         case TYPES.SEARCH_MOVIES_START:
             return {
