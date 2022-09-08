@@ -32,7 +32,9 @@ const schema = new mongoose.Schema({
     admin: {
         type: Boolean,
         default: false,
-    }
+    },
+    favorites: Array,
+    watching: Array,
 }, { timestamps: true })
 
 export const UserModel = mongoose.model('User', schema)

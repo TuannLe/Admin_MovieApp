@@ -13,11 +13,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 router.post('/create', upload.array("poster"), middlewareController.verifyTokenAndAdminAuth, movieController.addMovie)
-router.get('/get-all', middlewareController.verifyTokenAndAdminAuth, movieController.getMovies)
-router.get('/:id/get-by-category', middlewareController.verifyTokenAndAdminAuth, movieController.getMoviesByCategory)
-router.get('/:docId/get-link-movie', middlewareController.verifyTokenAndAdminAuth, movieController.getLinkMovie)
-router.post('/get-link', middlewareController.verifyTokenAndAdminAuth, movieController.getLink)
-router.post('/searchMovie', middlewareController.verifyTokenAndAdminAuth, movieController.searchMovies)
+router.get('/get-all', middlewareController.verifyToken, movieController.getMovies)
+router.get('/:id/get-by-category', middlewareController.verifyToken, movieController.getMoviesByCategory)
+router.get('/:docId/get-link-movie', middlewareController.verifyToken, movieController.getLinkMovie)
+router.post('/get-link', middlewareController.verifyToken, movieController.getLink)
+router.post('/searchMovie', middlewareController.verifyToken, movieController.searchMovies)
 router.post('/update', upload.array("poster"), middlewareController.verifyTokenAndAdminAuth, movieController.updateMovie)
 router.delete('/:id', middlewareController.verifyTokenAndAdminAuth, movieController.deleteMovie)
 

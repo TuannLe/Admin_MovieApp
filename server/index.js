@@ -6,6 +6,7 @@ import dotenv from 'dotenv'
 import categoryRouter from './routers/categories.js'
 import authRouter from './routers/auth.js'
 import movieRouter from './routers/movies.js'
+import userRouter from './routers/users.js'
 
 dotenv.config()
 
@@ -20,6 +21,7 @@ app.use(cors());
 app.use('/auth', authRouter);
 app.use('/categories', categoryRouter);
 app.use('/movies', movieRouter)
+app.use('/user', userRouter)
 
 
 
